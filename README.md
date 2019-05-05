@@ -18,3 +18,8 @@ consumer offset
 ![](eventconsumer_position.png)
 
 Also see eventstream ingestion example - https://github.com/duwamish-os/eventstream-pipeline-example1
+
+TODO
+----
+
+- update db state

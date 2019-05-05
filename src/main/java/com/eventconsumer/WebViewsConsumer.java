@@ -2,13 +2,16 @@ package com.eventconsumer;
 
 import com.eventconsumer.schema.CampaignEvent;
 import com.eventconsumer.schema.PageViewedEvent;
+import com.eventconsumer.state.PageState;
 import com.eventstream.consumer.dispatcher.MultiEventHandler;
 import com.eventstream.consumer.kinesis.KinesisEventStreamConsumer;
+import lombok.val;
 import org.json.JSONObject;
 
-public class CampaignConsumer extends KinesisEventStreamConsumer {
+public class WebViewsConsumer extends KinesisEventStreamConsumer {
 
-    public class CampaignHandler extends MultiEventHandler {
+    public class WebViewsHandler extends MultiEventHandler {
+
         public void onEvent(CampaignEvent campaignEvent) {
             System.out.println("=======================");
             System.out.println(campaignEvent);
@@ -16,25 +19,26 @@ public class CampaignConsumer extends KinesisEventStreamConsumer {
         }
 
         public void onEvent(PageViewedEvent pageViewedEvent) {
-            System.out.println("=======================");
-            System.out.println(pageViewedEvent);
-            System.out.println("=======================");
+            val pageState = new PageState();
+            pageState.apply(pageViewedEvent);
+            System.out.println("new state is " + pageState.views);
         }
+        
     }
 
-    public CampaignConsumer() {
+    public WebViewsConsumer() {
         //FIXME stream from config
         this("Pipeline1Stream");
     }
 
     //note: the Handler class has to be public/ not just method
-    public CampaignConsumer(String stream) {
+    public WebViewsConsumer(String stream) {
         super(stream);
         this.setEventSourceIdLambda(event -> new JSONObject(event).getLong("eventUuid"))
                 .setEventTypeLambda(event ->
                         new JSONObject(event).getString("eventType"))
-                .setEventHandler(new CampaignHandler());
+                .setEventHandler(new WebViewsHandler());
     }
 
-    public static CampaignConsumer instance = new CampaignConsumer();
+    public static WebViewsConsumer instance = new WebViewsConsumer();
 }

@@ -1,9 +1,9 @@
 package com.eventconsumer;
 
-public class CampaignConsumerApp {
+public class WebViewsConsumerApp {
 
     public static void main(String[] args) {
-        CampaignConsumer.instance.consumeOnce();
+        WebViewsConsumer.instance.consumeOnce();
         System.out.println("==============completed=============");
     }
 
