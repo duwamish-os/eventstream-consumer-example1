@@ -17,6 +17,14 @@ consumer offset
 
 ![](eventconsumer_position.png)
 
+State
+---
+
+```sql
+select * from page_views;
+
+```
+
 Also see eventstream ingestion example - https://github.com/duwamish-os/eventstream-pipeline-example1
 
 TODO

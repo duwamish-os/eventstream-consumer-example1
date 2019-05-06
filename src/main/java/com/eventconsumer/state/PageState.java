@@ -9,31 +9,6 @@ import java.sql.*;
 import java.util.Optional;
 import java.util.function.Supplier;
 
-abstract class State {
-
-    static Optional<Connection> connectionMaybe = db();
-
-    public <A> Optional<A> safe(Supplier<A> fn) {
-        try {
-            return Optional.ofNullable(fn.get());
-        } catch (Exception e) {
-            return Optional.empty();
-        }
-    }
-
-    public static Optional<Connection> db() {
-        String url = "jdbc:postgresql://page-analytics-instances.???.us-west-2.rds.amazonaws.com/page_analytics_db?user=root&password=???&ssl=false";
-
-        try {
-            return Optional.ofNullable(DriverManager.getConnection(url));
-        } catch (Exception e) {
-            System.out.println("Error getting connection" + e);
-            return Optional.empty();
-        }
-    }
-
-}
-
 public class PageState extends State {
 
     @Getter
@@ -54,7 +29,7 @@ public class PageState extends State {
         Optional<PageState> state = connectionMaybe.flatMap(connection -> {
             try {
                 PreparedStatement statement = connection.prepareStatement(
-                        "INSERT INTO page_views(page_id, page_views, event_history) VALUES(?, ?, ?)");
+                        "INSERT INTO page_views(page_id, page_views, event_history) VALUES(?, ?, ?::json)");
                 statement.setString(1, pageId);
                 statement.setLong(2, views);
                 statement.setString(3, pageViewedEvent.toJSON(pageViewedEvent));
