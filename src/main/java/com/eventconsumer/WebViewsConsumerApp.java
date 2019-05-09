@@ -3,8 +3,9 @@ package com.eventconsumer;
 public class WebViewsConsumerApp {
 
     public static void main(String[] args) {
-        WebViewsConsumer.instance.consumeOnce();
-        System.out.println("==============completed=============");
+        System.out.println("==============start consumer=============");
+        WebViewsConsumer.consumer.consume();
+        System.out.println("==============consumer completed=============");
     }
 
 }

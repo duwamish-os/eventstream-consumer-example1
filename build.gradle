@@ -12,6 +12,9 @@ repositories {
     mavenLocal()
 }
 
+apply plugin:'application'
+mainClassName = "com.eventconsumer.WebViewsConsumerApp"
+
 dependencies {
     compile group: 'eventstream', name: 'stream-driver', 'version': '1.0'
     compileOnly 'org.projectlombok:lombok:1.18.6'

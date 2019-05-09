@@ -1,3 +1,4 @@
+CREATE DATABASE analytics;
 CREATE SCHEMA page_analytics_schema;
 COMMIT;
 

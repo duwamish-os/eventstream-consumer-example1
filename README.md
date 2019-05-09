@@ -21,11 +21,82 @@ State
 ---
 
 ```sql
+root@09b67ab0d27d:/# psql analytics -U postgres
+psql (11.2 (Debian 11.2-1.pgdg90+1))
+Type "help" for help.
+
 select * from page_views;
 
 ```
 
 Also see eventstream ingestion example - https://github.com/duwamish-os/eventstream-pipeline-example1
+
+```bash
+λ ls -l /tmp/zookeeper/version-2/log.1 
+-rw-r--r--  1 a1353612  wheel  67108880 May  7 21:38 /tmp/zookeeper/version-2/log.1
+
+ls -l /tmp/kafka-logs/
+total 24
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:24 Pipeline1Stream-0
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-0
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-1
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-10
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-11
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-12
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-13
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-14
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-15
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-16
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-17
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-18
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-19
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-2
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-20
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-21
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-22
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-23
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-24
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-25
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-26
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-27
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-28
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-29
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-3
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-30
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-31
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-32
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-33
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-34
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-35
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-36
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-37
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-38
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-39
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-4
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-40
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-41
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-42
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-43
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-44
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-45
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-46
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-47
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-48
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-49
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-5
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-6
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-7
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-8
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 __consumer_offsets-9
+-rw-r--r--  1 prayagupd  wheel     0 May  7 15:23 cleaner-offset-checkpoint
+drwxr-xr-x  5 prayagupd  wheel   160 May  7 15:23 es1-0
+-rw-r--r--  1 prayagupd  wheel    54 May  7 15:23 meta.properties
+-rw-r--r--  1 prayagupd  wheel  1228 May  7 21:38 recovery-point-offset-checkpoint
+-rw-r--r--  1 prayagupd  wheel  1228 May  7 21:38 replication-offset-checkpoint
+
+./gradlew run
+
+```
 
 TODO
 ----

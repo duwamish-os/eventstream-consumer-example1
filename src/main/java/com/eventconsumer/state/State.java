@@ -17,9 +17,10 @@ abstract class State {
         }
     }
 
-    public static Optional<Connection> db() {
-        String url = "jdbc:postgresql://page-analytics-instances.???.us-west-2.rds.amazonaws.com/page_analytics_db" +
-                "?user=root&password=?????????&ssl=false";
+    private static Optional<Connection> db() {
+        String url = "jdbc:postgresql://" +
+                "localhost:5432/analytics" +
+                "?user=postgres&password=postgres&ssl=false";
 
         try {
             return Optional.ofNullable(DriverManager.getConnection(url));
